@@ -1,0 +1,18 @@
+[project]
+name = "ecommerce-async-tests"
+version = "0.1.0"
+description = "демонстрация асинхронных API-тестов"
+authors = [
+    {name = "Pavel",email = "savchukpa@icloud.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic-settings (>=2.11.0,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
