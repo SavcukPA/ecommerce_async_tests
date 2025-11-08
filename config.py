@@ -1,6 +1,6 @@
 from typing import Literal
 
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -10,7 +10,7 @@ class Logger(BaseModel):
 
 
 class HttpClient(BaseModel):
-    url: str
+    host: str
     timeout: int
 
 
