@@ -1,6 +1,7 @@
 # ecommerce-async-tests
 
-**ecommerce-async-tests** — демонстрация асинхронных API-тестов для проекта e-commerce.  
+**ecommerce-async-tests** — демонстрация асинхронных API-тестов для проекта [fastapi_ecommerce_api](https://github.com/kolenkoal/fastapi_ecommerce_api).  
+
 Проект реализован на Python 3.12 с использованием pytest, pytest-asyncio и Allure для отчётности.
 
 ---
@@ -31,4 +32,3 @@
 git clone https://github.com/SavcukPA/ecommerce_async_tests.git
 cd ecommerce_async_tests
 
-poetry install
