@@ -9,9 +9,19 @@ class Logger(BaseModel):
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 
 
+class Environment(BaseModel):
+    stage: str
+    stand: str
+
+
 class HttpClient(BaseModel):
     host: str
     timeout: int
+
+
+class Token(BaseModel):
+    exp: int
+    aud: list[str]
 
 
 class Settings(BaseSettings):
@@ -21,9 +31,10 @@ class Settings(BaseSettings):
         case_sensitive=False,
         env_nested_delimiter="__",
     )
-
+    token: Token
     http_client: HttpClient
     logger: Logger
+    environment: Environment
 
 
 settings = Settings()

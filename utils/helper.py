@@ -22,6 +22,43 @@ class Helper:
         pydantic_model=None,
         response_type: ResponseType = ResponseType.JSON,
     ):
+        """
+        Метод для валидации HTTP-ответов в тестах API.
+
+        Выполняет базовые проверки ответа и возвращает данные в указанном формате.
+        Интегрирован с Allure-отчетами и системой логирования.
+
+        Parameters:
+        -----------
+        response : Response
+            HTTP-ответ от клиента (httpx.Response/requests.Response)
+
+        expected_code : int, optional
+            Ожидаемый HTTP статус-код (по умолчанию 200)
+
+        pydantic_model : BaseModel, optional
+            Pydantic-модель для валидации структуры JSON-ответа.
+            Если передан, выполняется проверка соответствия ответа модели.
+
+        response_type : ResponseType, optional
+            Тип возвращаемых данных (по умолчанию ResponseType.JSON):
+            - ResponseType.JSON: возвращает распарсенный JSON как словарь/список
+            - ResponseType.PYDANTIC_MODEL: возвращает инстанс Pydantic-модели
+            - Другие типы: возвращает исходный объект response
+
+        Returns:
+        --------
+            Данные в формате, указанном в response_type:
+            - dict/list для ResponseType.JSON
+            - BaseModel для ResponseType.PYDANTIC_MODEL
+            - Response для других типов
+
+        Raises:
+        -------
+        AssertionError
+            - Если фактический статус-код не совпадает с ожидаемым
+            - Если ответ не соответствует Pydantic-модели (при её указании)
+        """
         actual_code = response.status_code
         reason = response.reason_phrase or "No reason phrase"
 
@@ -36,15 +73,18 @@ class Helper:
             )
 
             allure.attach(
-                error_msg,
-                response.text,
-                name=f"HTTP Error {actual_code}",
+                body=response.text,
+                name=f"Response Body {actual_code}",
                 attachment_type=allure.attachment_type.TEXT,
             )
             logger.error(error_msg)
             raise AssertionError(error_msg)
 
         logger.info(f"Status code check passed: {actual_code} for {response.url}")
+
+        if response.status_code == 204:
+            logger.info("Empty response (204), returning raw response")
+            return response
 
         if pydantic_model:
             pydantic_model.model_validate(response.json())
