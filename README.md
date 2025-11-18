@@ -2,7 +2,7 @@
 
 **ecommerce-async-tests** — демонстрация асинхронных API-тестов для проекта [fastapi_ecommerce_api](https://github.com/kolenkoal/fastapi_ecommerce_api).  
 
-Проект реализован на Python 3.12 с использованием pytest, pytest-asyncio и Allure для отчётности.
+Проект реализован на Python 3.12 с использованием **pytest**, **pytest-asyncio** и **allure** для отчётности.
 
 ---
 
@@ -31,4 +31,18 @@
 ```bash
 git clone https://github.com/SavcukPA/ecommerce_async_tests.git
 cd ecommerce_async_tests
+```
+2. Устанавливаем poetry и зависимости:
+```python
+pip install poetry
+poetry install
+```
+
+3. Проверяем устновленные зависимости:
+```python
+poetry show --tree
+или
+poetry show
+```
+![Poetry show]readme_images/poetry_dep.jpg
 
