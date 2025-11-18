@@ -30,3 +30,5 @@
 ```bash
 git clone https://github.com/SavcukPA/ecommerce_async_tests.git
 cd ecommerce_async_tests
+
+poetry install
