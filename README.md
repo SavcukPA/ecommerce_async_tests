@@ -8,8 +8,34 @@
 
 ## 📦 Требования
 
-- Python >= 3.12
+- Python >= 3.12.4
 - Poetry >= 1.5 (или любая версия, поддерживающая pyproject.toml)
+
+### Предустановка
+
+#### Allure
+  - 1 Устновка scoop (power shell)
+```bash
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+```
+  - 2 Устновка allure
+```bash
+  scoop install allure
+```
+  - 3 Установка Java
+```bash
+  scoop install temurin25-jdk
+```
+
+[youtube install allure](https://www.youtube.com/watch?v=MUKkN3h2OCM)
+
+#### Docker
+
+[docker-desctop download link](https://docs.docker.com/desktop/setup/install/windows-install/)
+[youtube install docker-desctop](https://www.youtube.com/watch?v=xQDh6dJWTf8)
+- 1. Выбрать OS
+- 2. Запустить файл установки
 
 ### Основные зависимости
 
@@ -45,4 +71,5 @@ poetry show --tree
 poetry show
 ```
 ![Poetry dependencies](readme_images/poetry_dep.jpg)
+
 
