@@ -44,5 +44,5 @@ poetry show --tree
 или
 poetry show
 ```
-![Poetry show]readme_images/poetry_dep.jpg
+![Poetry dependencies](readme_images/poetry_dep.jpg)
 
