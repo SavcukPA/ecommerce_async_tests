@@ -28,14 +28,17 @@
   scoop install temurin25-jdk
 ```
 
-[youtube install allure](https://www.youtube.com/watch?v=MUKkN3h2OCM)
+▶️[Видео: Установка Allure на Windows](https://www.youtube.com/watch?v=MUKkN3h2OCM)
 
 #### Docker
 
-[docker-desctop download link](https://docs.docker.com/desktop/setup/install/windows-install/)
-[youtube install docker-desctop](https://www.youtube.com/watch?v=xQDh6dJWTf8)
-- 1. Выбрать OS
-- 2. Запустить файл установки
+- 1 Выбрать OS
+- 2 Запустить файл установки
+  
+▶️[Видео: Установка Dockerr Desctope на Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
+
+#### Fastapu-ecommerce-api
+
 
 ### Основные зависимости
 
