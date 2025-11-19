@@ -1,4 +1,4 @@
-# ecommerce-async-tests
+# httpx-async-tests
 
 **ecommerce-async-tests** — демонстрация асинхронных API-тестов для проекта [fastapi_ecommerce_api](https://github.com/kolenkoal/fastapi_ecommerce_api).  
 
@@ -26,12 +26,12 @@
 ### Предустановка
 
 #### Allure
-  - 1 Установка scoop (power shell)
+  - 1 Установка Scoop (PowerShell)
 ```bash
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 ```
-  - 2 Устновка allure
+  - 2 Устновка Allure
 ```bash
   scoop install allure
 ```
@@ -44,12 +44,12 @@
 
 #### Docker
 
-- 1 Выбрать OS
+- 1 Выбрать операционную систему
 - 2 Запустить файл установки
   
 ▶️[Видео: Установка Docker Desktop на Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
 
-#### Fastapu-ecommerce-api
+#### FastApi-ecommerce-api
 [project fastapi_ecommerce_api](https://github.com/kolenkoal/fastapi_ecommerce_api)
 - 1 Прочитать Readme
 - 2 Выполнить устновку по инстуркции
@@ -80,7 +80,7 @@ docker-compose up -d --build
 git clone https://github.com/SavcukPA/ecommerce_async_tests.git
 cd ecommerce_async_tests
 ```
-2. Устанавливаем poetry и зависимости:
+2. Устанавливаем Poetry и зависимости:
 ```bash
 pip install poetry
 poetry install
@@ -89,7 +89,7 @@ poetry install
 3. Проверяем установленные зависимости:
 ```bash
 poetry show --tree
-или
+#или
 poetry show
 ```
 ![Poetry dependencies](readme_images/poetry_dep.jpg)
@@ -104,9 +104,11 @@ pytest -sv tests
 - 1 Сгенерируются две папки
   - 1 allure-results / папка с результатами тесового прогона
   - 2 allure-report / папка с отчетами
-- 2 Открыть папку allure-report и открыть файл index.html (в браузере)
+- 2 Открыть папку allure-report и открыть файл index.html в браузере
 ![Allure derictories](readme_images/allure_dir.jpg)
+
 ## Ожидаемый результат отображения отчета index.html
+
 ![Allure main page](readme_images/allure_main_page.jpg)
 ![Allure tests run page](readme_images/tests_run_page.jpg)
 
@@ -131,11 +133,12 @@ ecommerce_async_tests/
 │   
 │
 ├── data/
-│   ├── cases/
+│   └── cases/
 │       └── register_users.py
 │   
 │
 ├── fixtures/
+|   ├── init.py
 │   └── auth.py
 │   
 │
@@ -143,12 +146,6 @@ ecommerce_async_tests/
 │   ├── error.log
 │   └── test.log
 │
-├── readme_images/
-│   ├── allure_dir.jpg
-│   ├── allure_main_page.jpg
-│   ├── docker.jpg
-│   ├── poetry_dep.jpg
-│   └── tests_run_page.jpg
 │
 ├── services/
 │   └── auth/
@@ -179,14 +176,62 @@ ecommerce_async_tests/
 ├── .gitignore
 ├── config.py
 ├── conftest.py
-├── ex.py
 ├── logging_config.yaml
 ├── poetry.lock
 ├── pyproject.toml
 └── pytest.ini
 ```
 
-- **allure/:** Директория содержащая отчеты allure
-    - **allure-report** Директория со сгенерированными отчетами allure
-    - **allure-results** Директория с результатами отчета, используется для генерации allure отчетов
+- **allure/** Каталог для хранения Allure-артефактов  
+  - **allure-report/** Готовые HTML-отчёты Allure  
+  - **allure-results/** Результаты тестов, на основе которых генерируются отчёты  
 
+- **assertions/** Каталог с проверками (assert-логикой) для сервисов и эндпоинтов  
+  - **auth/** Проверки для сервиса авторизации  
+    - **login.py** Проверки для эндпоинта `/login`  
+    - **register.py** Проверки для эндпоинта `/register`  
+
+- **clients/** Каталог конфигурации и логики асинхронного HTTP-клиента  
+  - **base_client.py** Базовый клиент и его функционал  
+  - **event_hooks.py** Хуки клиента (логирование, обработка событий)  
+  - **headers.py** Формирование заголовков запросов  
+
+- **data/** Каталог с тестовыми данными  
+  - **cases/** Описание тест-кейсов  
+    - **register_users.py** Тест-кейсы для проверки эндпоинта `/register`  
+
+- **fixtures/** Каталог с pytest-фикстурами  
+  - **auth.py** Фикстуры для сервиса авторизации  
+
+- **logs/** Каталог файлов логов (создаётся при выполнении тестов)  
+
+- **services/** Каталог с реализацией сервисов (бизнес-логика взаимодействия с API)
+    - **models/** Директория с моделями данных, специфичными для Auth  
+      - **user_register.py** Модель данных для регистрации пользователя  
+    - **auth.py** Модуль с основной логикой сервиса Auth  
+    - **endpoints.py** Модуль, содержащий эндпойнты сервиса Auth  
+    - **payloads.py** Модуль с payload-ами и структурами данных для запросов Auth
+- **tests/** Каталог, содержащий тесты проекта  
+  - **api_tests/** Каталог тестов, связанных с API  
+    - **auth_tests/** Каталог тестов для сервиса Auth  
+      - **user_login_tests.py** Модуль с тестами для эндпойнта авторизации пользователя  
+      - **user_register_tests.py** Модуль с тестами для эндпойнта регистрации пользователя 
+  - **utils/** Каталог вспомогательных утилит и общих инструментов проекта  
+  - **base_helper_func.py** Базовые вспомогательные функции (парсинг токенов, декодирование JWT и др.)  
+  - **generators.py** Генераторы случайных данных (строки, email, имена и т.п.)  
+  - **helper.py** Общие функции-помощники, используемые в тестах  
+  - **hooks.py** Хуки для pytest (дополнительная логика до/после тестов)  
+  - **models.py** Pydantic-модели ошибок и структур данных  
+  - **paths.py** Централизованное управление путями (кейсами, JSON, ресурсам)  
+  - **regex_patterns.py** Набор регулярных выражений для валидаций  
+  - **setup_logger.py** Инициализация и конфигурация логирования  
+
+- **.env** Файл переменных окружения для запуска тестов  
+- **.gitignore** Исключения для Git  
+- **config.py** Основная конфигурация проекта, загрузка настроек через pydantic-settings  
+- **conftest.py** Фикстуры и общая подготовка окружения pytest  
+- **ex.py** Вспомогательный модуль (пример/экспериментальный код)  
+- **logging_config.yaml** Конфигурация логгеров (формат, уровни, хендлеры)  
+- **poetry.lock** Зафиксированные версии зависимостей Poetry  
+- **pyproject.toml** Описание зависимостей и настроек проекта (Poetry)  
+- **pytest.ini** Конфигурация pytest (марки, настройки логгирования и др.)  
