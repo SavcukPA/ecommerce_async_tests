@@ -14,7 +14,7 @@
 ### Предустановка
 
 #### Allure
-  - 1 Устновка scoop (power shell)
+  - 1 Установка scoop (power shell)
 ```bash
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
@@ -38,6 +38,21 @@
 ▶️[Видео: Установка Dockerr Desctope на Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
 
 #### Fastapu-ecommerce-api
+[project fastapi_ecommerce_api](https://github.com/kolenkoal/fastapi_ecommerce_api)
+- 1 Прочитать Readme
+- 2 Выполнить устновку по инстуркции
+
+### Устновка из архива
+
+Есть подготовленный архив с проектом. Внёс нужные измениния и всё работает сразу.
+
+- 1 Скачайте архив 📥[encomerce.zip](https://disk.yandex.ru/d/3yxsZPytNxn8dg)
+- 2 Разархивируйте в любое удобное место
+- 3 Откроте командную строку в корневой директории проекта
+- 4 Выолните команду
+``` bash
+docker-compose up -d --build
+```
 
 
 ### Основные зависимости
@@ -62,13 +77,13 @@ git clone https://github.com/SavcukPA/ecommerce_async_tests.git
 cd ecommerce_async_tests
 ```
 2. Устанавливаем poetry и зависимости:
-```python
+```bash
 pip install poetry
 poetry install
 ```
 
 3. Проверяем устновленные зависимости:
-```python
+```bash
 poetry show --tree
 или
 poetry show
