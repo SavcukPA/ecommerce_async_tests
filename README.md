@@ -44,8 +44,9 @@
 
 #### Docker
 
-- 1 Выбрать операционную систему
-- 2 Запустить файл установки
+- 1 [Скачать Docker Desktop](https://docs.docker.com/desktop/setup/install/windows-install/)
+- 2 Выбрать операционную систему
+- 3 Запустить файл установки
   
 ▶️[Видео: Установка Docker Desktop на Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
 
