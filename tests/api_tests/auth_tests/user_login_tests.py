@@ -1,10 +1,7 @@
-from pprint import pprint
-
 import allure
 import pytest
 import services
 from assertions.auth.login import positive_login_assertions
-from utils.base_helper_func import extract_secure_token, decode_jwt_token
 
 
 class TestsAuthorization:
@@ -28,5 +25,4 @@ class TestsAuthorization:
         }
         auth = services.Auth(client=client)
         response = await auth.login(payload=payload)
-        pprint(user_register)
         positive_login_assertions(response=response, user_data=user_register)
