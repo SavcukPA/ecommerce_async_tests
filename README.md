@@ -234,4 +234,8 @@ ecommerce_async_tests/
 - **logging_config.yaml** Конфигурация логгеров (формат, уровни, хендлеры)  
 - **poetry.lock** Зафиксированные версии зависимостей Poetry  
 - **pyproject.toml** Описание зависимостей и настроек проекта (Poetry)  
-- **pytest.ini** Конфигурация pytest (марки, настройки логгирования и др.)  
+- **pytest.ini** Конфигурация pytest (марки, настройки логгирования и др.)
+
+## Обратная связь
+
+[Telegram](https://t.me/Savchuk_Pavel)
