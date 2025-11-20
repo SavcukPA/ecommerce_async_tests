@@ -160,8 +160,8 @@ ecommerce_async_tests/
 ├── tests/
 │   └── api_tests/
 │       └── auth_tests/
-│           ├── user_login_tests.py
-│           └── user_register_tests.py
+│           ├── login_tests.py
+│           └── register_tests.py
 │
 ├── utils/
 │   ├── base_helper_func.py
@@ -215,8 +215,8 @@ ecommerce_async_tests/
 - **tests/** Каталог, содержащий тесты проекта  
   - **api_tests/** Каталог тестов, связанных с API  
     - **auth_tests/** Каталог тестов для сервиса Auth  
-      - **user_login_tests.py** Модуль с тестами для эндпойнта авторизации пользователя  
-      - **user_register_tests.py** Модуль с тестами для эндпойнта регистрации пользователя 
+      - **login_tests.py** Модуль с тестами для эндпойнта авторизации пользователя  
+      - **register_tests.py** Модуль с тестами для эндпойнта регистрации пользователя 
   - **utils/** Каталог вспомогательных утилит и общих инструментов проекта  
   - **base_helper_func.py** Базовые вспомогательные функции (парсинг токенов, декодирование JWT и др.)  
   - **generators.py** Генераторы случайных данных (строки, email, имена и т.п.)  
